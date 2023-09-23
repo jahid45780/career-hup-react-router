@@ -1,6 +1,9 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { AiFillDollarCircle,AiFillWallet,AiFillPhone,AiOutlineMail } from "react-icons/ai";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { saveJobApplication } from "../../Uitility/LocalStoage";
 
 const JobDetails = () => {
   
@@ -9,6 +12,11 @@ const JobDetails = () => {
     const idInt = parseInt(id);
     const job = jobs.find(job => job.id === idInt);
      console.log(job);
+     const handleApplyJob =()=>{
+        saveJobApplication(idInt)
+        toast('you have applied successfully')
+    }
+    
 
 
     return (
@@ -33,10 +41,11 @@ const JobDetails = () => {
                  <p className=" flex mt-4" > <AiFillPhone className=" text-2xl" ></AiFillPhone> <span className=" font-bold" >Phone:</span> {job.phone} </p>
                  <p className=" flex mt-4" > <AiOutlineMail className=" text-2xl" ></AiOutlineMail> <span className=" font-bold" >Email:</span> {job.email} </p>
                  <p className=" flex mt-4" > <FaMapMarkerAlt className=" text-2xl" ></FaMapMarkerAlt> <span className=" font-bold" >Address:</span> {job.address} </p>
-                <button className="btn btn-primary w-full mt-4" >Apply Now</button>
+                <button onClick={handleApplyJob} className="btn btn-primary w-full mt-4" >Apply Now</button>
             </div>
 
            </div>
+           <ToastContainer></ToastContainer>
         </div>
     );
 };
