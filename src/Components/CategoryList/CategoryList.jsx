@@ -14,7 +14,7 @@ const CategoryList = () => {
             <h2 className=" text-5xl text-center mt-7" > Job Category list </h2>
             <p className=" text-center mt-4" > Explore thousands of job opportunities with all the information you need. Its your future </p>
 
-            <div className=" grid grid-cols-1 lg:grid-cols-4"  >
+            <div className=" grid grid-cols-1 lg:grid-cols-4 gap-2 mt-3"  >
                 {
           jobs.map(job=> <CatJob key={job.id} job={job} ></CatJob> )
                 }
